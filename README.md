@@ -32,17 +32,15 @@ Things you may want to cover:
 | --------      | ------  | ----------- |
 | nick_name     | string  | null: false |
 | email         | string  | null: false |
-| password      | string  | null: false |
-| first_name    | string  | null: false |
-| last_name     | string  | null: false |
-|  id           | integer | null: false |
-
+|first_name_kana| string  | null: false |
+| last_name_kana| string  | null: false |
+| birth         | date    | null: false |
 
 ### Association
 - has_many :items
 - has_many :buyer
 - has_one :card
-
+- has_many :comments
 
 ## items テーブル
 
@@ -51,13 +49,14 @@ Things you may want to cover:
 | image       | text       | null: false |
 | item_name   | string     | null: false |
 | text        | string     | null: false |
+| price       | integer    | null: false |
 | user_id     | references | null: false |
 | items_id    | integer    | null: false |
 
 ### Association
 - belongs_to :user
 - belongs_to :buyer 
-
+- has_many  :comments
 
 
 ## buyer テーブル
@@ -84,4 +83,16 @@ Things you may want to cover:
 
 - belongs_to :buyer
 - belongs_to :user
+
+## comments テーブル
+| Column      | Type       | Options     |
+| ------      | ------     | ----------- |
+| comment     | text       | null: false |
+| user_id     | references | null: false, foreign_key: true |
+| item_id     | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :comment
 
