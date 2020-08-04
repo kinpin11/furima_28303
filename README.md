@@ -32,6 +32,9 @@ Things you may want to cover:
 | --------      | ------  | ----------- |
 | nick_name     | string  | null: false |
 | email         | string  | null: false |
+| password      | integer | null: false |
+| first_name    | string  | null: false |
+| last_name     | string  | null: false |
 |first_name_kana| string  | null: false |
 | last_name_kana| string  | null: false |
 | birth         | date    | null: false |
@@ -39,7 +42,6 @@ Things you may want to cover:
 ### Association
 - has_many :items
 - has_many :buyer
-- has_one :card
 - has_many :comments
 
 ## items テーブル
@@ -49,9 +51,14 @@ Things you may want to cover:
 | image       | text       | null: false |
 | item_name   | string     | null: false |
 | text        | string     | null: false |
+| category    | string     | null: false |
+| item_status | string     | null: false |
+| payer       |references  | null: false, foreign_key: true |
+| shipping_origin    | string | null: false |
+|date_until_shipping | string | null: false |
 | price       | integer    | null: false |
-| user_id     | references | null: false |
-| items_id    | integer    | null: false |
+| user        | references | null: false, foreign_key: true  |
+| items       | integer    | null: false |
 
 ### Association
 - belongs_to :user
@@ -62,34 +69,20 @@ Things you may want to cover:
 ## buyer テーブル
 | Column  | Type    | Options                        |
 | ------- | ------- | ------------------------------ |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
 - has_many :items
-- has_one :card
 
-## card テーブル
-
-| Column           | Type     | Options                 |
-| -------          | -------  | ----------------------- |
-| number           |  integer |                         |
-| month            |  integer |                         |
-| security_number  |  integer |                         |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
-### Association
-
-- belongs_to :buyer
-- belongs_to :user
 
 ## comments テーブル
 | Column      | Type       | Options     |
 | ------      | ------     | ----------- |
 | comment     | text       | null: false |
-| user_id     | references | null: false, foreign_key: true |
-| item_id     | references | null: false, foreign_key: true |
+| user        | references | null: false, foreign_key: true |
+| item        | references | null: false, foreign_key: true |
 
 ### Association
 
