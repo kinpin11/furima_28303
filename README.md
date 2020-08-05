@@ -41,7 +41,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :items
-- has_many :buyer
+- has_many :buyers
 - has_many :comments
 
 
@@ -52,13 +52,13 @@ Things you may want to cover:
 | image       | text       | null: false |
 | name        | string     | null: false |
 | text        | string     | null: false |
-| category    | string     | null: false |
-| item_status | string     | null: false |
-| payer       |references  | null: false, foreign_key: true |
-| shipping_origin    | string | null: false |
-|date_until_shipping | string | null: false |
-| price       | integer    | null: false |
-| user        | references | null: false, foreign_key: true  |
+| category_id | integer    | null: false |
+| status_id   | integer    | null: false |
+| payer_id    | integer    | null: false | 
+| shipping_origin_id       | integer    | null: false |          
+| date_until_shipping_id   | integer    | null: false | 
+| price       |  integer   | null: false  |
+| user        | references | null: false, foreign_key|
 | items       | integer    | null: false |
 
 ### Association
@@ -66,6 +66,11 @@ Things you may want to cover:
 - has_one :buyer 
 - has_many  :comments
 - has_one :shipping_address
+- belongs_to_active_hash :category
+- belongs_to_active_hash :status
+- belongs_to_active_hash :payer
+- belongs_to_active_hash :shipping_origin
+- belongs_to_active_hash :date_until_shipping 
 
 
 ## buyer テーブル
@@ -76,7 +81,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- belong_to :items
+- belongs_to :items
 
 
 ## comments テーブル
@@ -94,11 +99,11 @@ Things you may want to cover:
 ## shipping_address テーブル
 | Column       | Type       | Options     |
 | ------       | ------     | ----------- |
-| post_code    | integer    | null: false |
-| prefecture   | string     | null: false |
-| city         | string     | null: false |
-| house_number  | string     | null: false |
-| building_name| string     | null: false |
-| phone_number|   integer   | null: false |
+| shipping_origin_id        | integer     | null: false | 
+| city         |  string    | null: false |
+| house_number |  string    | null: false |
+| building_name|  string    |             |
+| phone_number|   string   | null: false  |
 
-belongs_to :item
+- belongs_to :item
+- belongs_to_active_hash :shipping_origin
