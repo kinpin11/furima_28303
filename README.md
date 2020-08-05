@@ -43,13 +43,14 @@ Things you may want to cover:
 - has_many :items
 - has_many :buyer
 - has_many :comments
+-has_one :shipping_address
 
 ## items テーブル
 
 | Column      | Type       | Options     |
 | ------      | ------     | ----------- |
 | image       | text       | null: false |
-| item_name   | string     | null: false |
+| name        | string     | null: false |
 | text        | string     | null: false |
 | category    | string     | null: false |
 | item_status | string     | null: false |
@@ -87,5 +88,16 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- belongs_to :comment
+- belongs_to :item
 
+## shipping_address テーブル
+| Column       | Type       | Options     |
+| ------       | ------     | ----------- |
+| post_code    | integer    | null: false |
+| prefecture   | string     | null: false |
+| city         | string     | null: false |
+| house_numbe  | string     | null: false |
+| building_name| string     | null: false |
+| phone_number|   integer   | null: false |
+
+belongs_to :user
