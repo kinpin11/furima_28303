@@ -43,7 +43,7 @@ Things you may want to cover:
 - has_many :items
 - has_many :buyer
 - has_many :comments
--has_one :shipping_address
+
 
 ## items テーブル
 
@@ -63,8 +63,9 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- belongs_to :buyer 
+- has_one :buyer 
 - has_many  :comments
+- has_one :shipping_address
 
 
 ## buyer テーブル
@@ -75,7 +76,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- has_many :items
+- belong_to :items
 
 
 ## comments テーブル
@@ -96,8 +97,8 @@ Things you may want to cover:
 | post_code    | integer    | null: false |
 | prefecture   | string     | null: false |
 | city         | string     | null: false |
-| house_numbe  | string     | null: false |
+| house_number  | string     | null: false |
 | building_name| string     | null: false |
 | phone_number|   integer   | null: false |
 
-belongs_to :user
+belongs_to :item
