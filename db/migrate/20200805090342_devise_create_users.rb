@@ -3,10 +3,15 @@
 class DeviseCreateUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :users do |t|
-      ## Database authenticatable
+      ## Database authenticatable 
+      t.string :nick_name,   null:false
+      t.string :first_name,  null:false
+      t.string :last_name, null:false
+      t.string :first_name_kana,  null:false
+      t.string :last_name_kana,  null:false
+      t.date :birth,  null:false
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
@@ -42,3 +47,5 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
     # add_index :users, :unlock_token,         unique: true
   end
 end
+
+# rails db:rollback STEP=3
