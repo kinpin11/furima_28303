@@ -104,6 +104,6 @@ Things you may want to cover:
 | house_number |  string    | null: false |
 | building_name|  string    |             |
 | phone_number|   string   | null: false  |
-
+| item         | references|null: false, foreign_key: true 
 - belongs_to :item
 - belongs_to_active_hash :shipping_origin
