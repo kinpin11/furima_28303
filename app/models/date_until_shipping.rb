@@ -8,4 +8,4 @@ class DateUntilShipping < ActiveHash::Base
 ]
 end
 
-end
+
