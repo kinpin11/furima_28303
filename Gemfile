@@ -45,6 +45,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', require: false
+  # gem 'sqlite3'
 end
 
 group :test do
@@ -64,3 +65,7 @@ gem 'pry-rails'
 group :production do
   gem 'rails_12factor'
 end
+# gem 'pg', '>= 0.18', '< 2.0'
+# group :production do
+#   gem 'pg'
+# end
