@@ -64,8 +64,6 @@ gem 'factory_bot_rails'
 gem 'pry-rails'
 group :production do
   gem 'rails_12factor'
+  #  gem 'pg'
 end
 # gem 'pg', '>= 0.18', '< 2.0'
-# group :production do
-#   gem 'pg'
-# end
