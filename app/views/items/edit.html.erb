@@ -10,7 +10,7 @@ app/assets/stylesheets/items/new.css %>
     <%= form_with local: true do |f| %>
 
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# render 'shared/error_messages', model: f.object %>
+    <%= render 'shared/error_messages', model: f.object %>
     <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
     <%# 出品画像 %>
@@ -92,7 +92,7 @@ app/assets/stylesheets/items/new.css %>
     <div class="sell-price">
       <div class="weight-bold-text question-text">
         <span>販売価格<br>(¥300〜9,999,999)</span>
-        <a class="question" href="#">?</a>
+        <%= link_to "?", new_item%>
       </div>
       <div>
         <div class="price-content">
@@ -101,7 +101,7 @@ app/assets/stylesheets/items/new.css %>
             <span class="indispensable">必須</span>
           </div>
           <span class="sell-yen">¥</span>
-          <%= f.text_field :hoge, class:"price-input", id:"item-price", placeholder:"例）300" %>
+          <%= f.text_field :, class:"price-input", id:"item-price", placeholder:"例）300" %>
         </div>
         <div class="price-content">
           <span>販売手数料 (10%)</span>
