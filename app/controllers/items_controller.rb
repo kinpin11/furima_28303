@@ -4,7 +4,20 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def new
+    @item = Item.new
+  end
+  
+
   def create
+    Item.create(item_params)
+  end
+
+ private
+
+  def item_params
+    params.require(:item).permit(:image, :name, :text, :category_id, :ststus_id, :payer_id, :shipping_origin_id, :date_until_shipping_id, :price)
+
   end
 
   # def move_to_index
