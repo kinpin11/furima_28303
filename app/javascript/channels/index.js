@@ -10,11 +10,11 @@ window.addEventListener('load', function(){
  const profit = document.getElementById("profit")
 
  item_price.addEventListener('change', function(){
-   let price = document.getElementById("item-price").value;
+   let price = item_price.value;
+  
    let handling_charge = price * 0.1
    let profit = price - handling_charge
    document.getElementById("add-tax-price").textContent = handling_charge
    document.getElementById("profit").textContent = profit
   })
-
 })
