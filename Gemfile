@@ -62,8 +62,13 @@ gem 'active_hash'
 gem 'devise'
 gem 'factory_bot_rails'
 gem 'pry-rails'
+
+
 group :production do
   gem 'rails_12factor'
-  #  gem 'pg'
+  
 end
-# gem 'pg', '>= 0.18', '< 2.0'
+
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
+
