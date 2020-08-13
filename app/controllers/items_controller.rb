@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
   def show
   
    @item = Item.find(params[:id])
-   @price = @item.price
+ 
  
   end
 
