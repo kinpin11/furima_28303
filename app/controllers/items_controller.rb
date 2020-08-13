@@ -17,11 +17,10 @@ class ItemsController < ApplicationController
       render :new
     end
 
-    def show
-      @item = @item.includes(:user)
-    end
+    # def show
+    #   @item = @item.includes(:user)
+    # end
 
-  end
 
   private
 
