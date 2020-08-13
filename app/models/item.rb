@@ -3,4 +3,13 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   validates :price, presence: true, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000 }
+
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :category
+  belongs_to_active_hash :status
+  belongs_to_active_hash :payer
+  belongs_to_active_hash :date_until_shipping
+  belongs_to_active_hash :shipping_origin
+  
 end
