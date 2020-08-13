@@ -1,7 +1,6 @@
 class CreateItems < ActiveRecord::Migration[6.0]
   def change
     create_table :items do |t|
-      t.text :image,            presence: true
       t.string :name,           presence: true
       t.string :text,           presence: true
       t.integer :category_id,   presence: true
