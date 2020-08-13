@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   # before_action :move_to_index, except: [:index, :show, :search]
   def index
+    @items = Item.includes(:user)
+    # binding.pry
   end
 
   def new
@@ -14,6 +16,11 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+
+    def show
+      @item = @item.includes(:user)
+    end
+
   end
 
   private
