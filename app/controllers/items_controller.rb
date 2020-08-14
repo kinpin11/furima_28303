@@ -16,9 +16,10 @@ class ItemsController < ApplicationController
       render :new
     end
   end
- def edit
+
+  def edit
     @item = Item.find(params[:id])
- end
+  end
 
   def show
     @item = Item.find(params[:id])
