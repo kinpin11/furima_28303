@@ -1,7 +1,6 @@
 class Item < ApplicationRecord
   validates :image, :name, :text, :category_id, :status_id, :payer_id, :shipping_origin_id, :date_until_shipping_id, presence: true
-  belongs_to :user
-  has_one_attached :image
+  
   validates :price, presence: true, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000 }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -10,4 +9,10 @@ class Item < ApplicationRecord
   belongs_to_active_hash :payer
   belongs_to_active_hash :date_until_shipping
   belongs_to_active_hash :shipping_origin
+  
+  belongs_to :user
+  has_one_attached :image
+  has_one_attached :buyer
+  
+
 end
