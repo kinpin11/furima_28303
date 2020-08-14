@@ -16,9 +16,9 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-  # def show
-  #   @item = @item.includes(:user)
-  # end
+ def edit
+    @item = Item.find(params[:id])
+ end
 
   def show
     @item = Item.find(params[:id])
