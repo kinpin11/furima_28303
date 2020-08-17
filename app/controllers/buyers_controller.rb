@@ -1,5 +1,6 @@
 class BuyersController < ApplicationController
   before_action :set_buyer, only: [:index, :create]
+  
   def index
       @user_buyer = UserBuyer.new
   end
@@ -19,7 +20,7 @@ class BuyersController < ApplicationController
   private
   def pay_item
    
-    Payjp.api_key = "sk_test_51a0b10d3544b6b827ef9f85"  # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @item.price,
       card: params[:token],
@@ -34,5 +35,10 @@ class BuyersController < ApplicationController
  def set_buyer
   @item = Item.find(params[:item_id])
  end
+
+ def  
+
+ end
+
 
 end
