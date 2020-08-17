@@ -1,4 +1,6 @@
 class Buyer < ApplicationRecord
-  validates :user, :item          pricepresence: true
+  validates :user, :item,          presence: true
   belongs_to :user
+  belongs_to :item
+  has_one :shipping_address
 end

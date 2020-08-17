@@ -1,8 +1,38 @@
 class BuyersController < ApplicationController
+  before_action :set_buyer, only: [:index, :create]
   def index
+      @user_buyer = UserBuyer.new
   end
 
   def create
+    @user_buyer = UserBuyer.new(buyer_params)
+    if @user_buyer.valid?
+      pay_item
+      @user_buyer.save
+      return redirect_to root_path
+    else
+      render :index
+    end
+ end
+
+
+  private
+  def pay_item
+   
+    Payjp.api_key = "sk_test_51a0b10d3544b6b827ef9f85"  # PAY.JPテスト秘密鍵
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: params[:token],
+      currency:'jpy'   
+    )
   end
+
+ def buyer_params
+    params.permit(:item_id, :post_code, :shipping_origin_id, :city, :house_number, :building_name, :phone_number).merge(user_id: current_user.id)
+ end
+
+ def set_buyer
+  @item = Item.find(params[:item_id])
+ end
 
 end
