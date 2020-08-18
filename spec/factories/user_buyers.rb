@@ -5,5 +5,6 @@ FactoryBot.define do
     city { '青山1-1-1' }
     house_number { '柳ビル１' }
     phone_number { Faker::Number.number(digits: 11) }
+    token { 'env["PAYJP_PUBLIC_KEY"] = ENV["PAYJP_PUBLIC_KEY"]' }
   end
 end

@@ -1,16 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe UserBuyer, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
   before do
     @user_buyer = FactoryBot.build(:user_buyer)
     @item = FactoryBot.build(:item)
     @user = FactoryBot.build(:user)
+    @user_buyer.token == ''
   end
 
   describe '送付先住所を保存' do
     context '商品が購入できる時場合' do
       it '配送先の住所情報が正しい時購入できる' do
+        expect(@user_buyer).to be_valid
+      end
+      it '購入した時にカード情報が保存されない時購入できる' do
         expect(@user_buyer).to be_valid
       end
     end
