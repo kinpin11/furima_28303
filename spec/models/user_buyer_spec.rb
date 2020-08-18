@@ -4,6 +4,8 @@ RSpec.describe UserBuyer, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
   before do
     @user_buyer = FactoryBot.build(:user_buyer)
+    @item = FactoryBot.build(:item)
+    @user = FactoryBot.build(:user)
   end
 
   describe '送付先住所を保存' do
@@ -13,6 +15,7 @@ RSpec.describe UserBuyer, type: :model do
         
         expect(@user_buyer).to be_valid
       end
+        
     end
     
     context "商品が購入できない場合" do
@@ -55,9 +58,13 @@ RSpec.describe UserBuyer, type: :model do
         @user_buyer.valid?
         expect(@user_buyer.errors.full_messages).to include("Phone number is invalid") 
       end
-
+      it "電話番号がハイフンがあって１２文字以上だと登録保存できない" do
+      @user_buyer.phone_number = "123-4567-8900"
+      @user_buyer.valid?
+      expect(@user_buyer.errors.full_messages).to include("Phone number is invalid") 
+      
+      end
     end
-
 
 
   end

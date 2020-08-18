@@ -1,19 +1,21 @@
 class BuyersController < ApplicationController
   before_action :set_buyer, only: [:index, :create]
+  before_action :move_to_index, except: [:index]
   
   def index
-      @user_buyer = UserBuyer.new
-  end
+     @user_buyer = UserBuyer.new
+   end  
 
   def create
     @user_buyer = UserBuyer.new(buyer_params)
-    if @user_buyer.valid?
+  if @user_buyer.valid?
       pay_item
       @user_buyer.save
       return redirect_to root_path
     else
       render :index
-    end
+  end
+  
  end
 
 
@@ -30,15 +32,16 @@ class BuyersController < ApplicationController
 
  def buyer_params
     params.permit(:item_id, :post_code, :shipping_origin_id, :city, :house_number, :building_name, :phone_number).merge(user_id: current_user.id)
- end
+ 
+  end
+
 
  def set_buyer
-  @item = Item.find(params[:item_id])
+   @item = Item.find(params[:item_id])
  end
 
- def  
-
- end
-
+ def move_to_index
+  redirect_to action: :index unless user_signed_in?
+end
 
 end
