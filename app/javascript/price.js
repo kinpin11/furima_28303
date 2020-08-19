@@ -10,7 +10,7 @@ window.addEventListener('load', function(){
  let profit = document.getElementById("profit")
  
  item_price.addEventListener('change', function(){
-   console.log("test")
+  
    let price = document.getElementById("item-price").value;
    let handling_charge = price * 0.1
    let profit = price - handling_charge
