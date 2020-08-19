@@ -1,7 +1,8 @@
 class BuyersController < ApplicationController
-  before_action :set_buyer, only: [:index, :create, :return_index]
+  before_action :set_buyer, only: [:index, :create, :return_index, :back_index]
   before_action :move_to_index, only: [:index]
   before_action :return_index, only: [:index]
+  before_action :back_index
   def index
     @user_buyer = UserBuyer.new
 
@@ -49,5 +50,9 @@ class BuyersController < ApplicationController
       redirect_to root_path
     end
   end
-
+  def back_index
+    unless  Buyer.find_by(item_id: @item.id) == nil
+      redirect_to root_path
+    end
+  end
 end
