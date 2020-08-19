@@ -34,8 +34,8 @@
     <%# 商品が売れていない場合はこちらを表示しましょう %>
      <% else %>
     <% if Buyer.find_by(item_id: @item.id) == nil %>
-    
-    <%= link_to '購入画面に進む', "/items/#{@item.id}/buyers", method: :get ,class:"item-red-btn"%>
+     
+      <%= link_to '購入画面に進む', "/items/#{@item.id}/buyers", method: :get ,class:"item-red-btn"%>
   
       <% end %>
     <% end %>
