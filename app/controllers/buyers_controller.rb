@@ -1,9 +1,10 @@
 class BuyersController < ApplicationController
-  before_action :set_buyer, only: [:index, :create]
+  before_action :set_buyer, only: [:index, :create, :return_index]
   before_action :move_to_index, only: [:index]
-
+  before_action :return_index, only: [:index]
   def index
     @user_buyer = UserBuyer.new
+
   end
 
   def create
@@ -42,4 +43,11 @@ class BuyersController < ApplicationController
     redirect_to root_path
     end
   end
+
+  def return_index
+    if  @item.user_id == current_user.id
+      redirect_to root_path
+    end
+  end
+
 end
