@@ -5,10 +5,10 @@ const channels = require.context('.', true, /_channel\.js$/)
 channels.keys().forEach(channels)
 
 window.addEventListener('load', function(){
- const item_price = document.getElementById("item-price")
- const handling_charge = document.getElementById("add-tax-price")
- const profit = document.getElementById("profit")
-
+ let item_price = document.getElementById("item-price")
+ let handling_charge = document.getElementById("add-tax-price")
+ let profit = document.getElementById("profit")
+ 
  item_price.addEventListener('change', function(){
    console.log("test")
    let price = document.getElementById("item-price").value;
