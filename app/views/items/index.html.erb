@@ -190,12 +190,18 @@
 
   <%# //商品一覧 %>
  </div>
-  <div class='purchase-btn'> 
-    <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
-       <% if user_signed_in? && current_user.id  %>
-         <p><%= link_to "出品する", new_item_path, method: :get %></p>
-       <% end %>
-</div>
+  <div class='purchase-btn'>  
+   <% if user_signed_in? && current_user.id  %>
 
-
+    <%= link_to new_item_path, method: :get do %>
+      <div><%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+        <p>出品する </p>
+      </div>
+         
+   
+     
+   
+     <% end %>
+   <% end %>
+       </div>
 <%= render "shared/footer" %>
