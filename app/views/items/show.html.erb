@@ -7,7 +7,7 @@
       <%= "商品名" %>
     </h2>
     <div class='item-img-content'>
-      <%= image_tag (@item.image), class:"item-box-img" %>
+      <%= image_tag (@item.image) ,class:"item-box-img" %>
       <%# 商品が売れている場合は、sould outの表示をしましょう。 %>
       <% if Buyer.find_by(item_id: @item.id) %>
       <div class='sold-out'>
@@ -33,8 +33,8 @@
     
     <%# 商品が売れていない場合はこちらを表示しましょう %>
      <% else %>
-     <% if Buyer.find_by(item_id: @item.id) == nil %>
-       
+    <% if Buyer.find_by(item_id: @item.id) == nil %>
+     
       <%= link_to '購入画面に進む', "/items/#{@item.id}/buyers", method: :get ,class:"item-red-btn"%>
   
       <% end %>
